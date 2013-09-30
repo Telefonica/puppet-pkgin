@@ -44,13 +44,17 @@ Puppet::Type.type(:package).provide :pkgin, :parent => Puppet::Provider::Package
     # Remove the last three lines of help text.
     packages.slice!(-3, 3)
 
-    matching_package = nil
-    packages.detect do |package|
+    matching_package = []
+    packages.select{ |pkg| pkg.start_with?("#{resource[:name]}") }.each do |package|
       properties = self.class.parse(package)
       matching_package = properties if properties && resource[:name] == properties[:name]
     end
 
-    matching_package
+    if matching_package.length > 1
+      warning( "Multiple instances matching #{resource[:name]} : #{matching_package}" )
+    end
+
+    matching_package.first
   end
 
   def install
