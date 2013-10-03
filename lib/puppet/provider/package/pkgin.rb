@@ -5,7 +5,7 @@ Puppet::Type.type(:package).provide :pkgin, :parent => Puppet::Provider::Package
 
   commands :pkgin => "pkgin"
 
-  has_feature :installable, :uninstallable
+  has_feature :installable, :uninstallable, :upgradeable
 
   def self.parse(package, force_status=nil)
 
@@ -64,5 +64,18 @@ Puppet::Type.type(:package).provide :pkgin, :parent => Puppet::Provider::Package
   def uninstall
     pkgin("-y", :remove, resource[:name])
   end
+
+  def latest
+    # -f seems required when repositories.conf changes
+    pkgin("-yf", :update)
+    package = self.query
+    if package[:status] == '<'
+      notice  "Upgrading #{package[:name]} to #{package[:version]}"
+      pkgin("-y", :install, package[:name])
+    else
+      true
+    end
+  end
+
 end
 
