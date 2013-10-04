@@ -24,4 +24,5 @@ solaris/lib/puppet/provider/package/blastwave.rb
 solaris/lib/puppet/provider/package/sun.rb
 solaris/lib/puppet/provider/package/sunfreeware.rb
 solaris/lib/puppet/provider/package/pkg.rb
-
+@pkgdir solaris/lib/facter
+solaris/lib/facter/solarisflavour.rb
