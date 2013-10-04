@@ -25,6 +25,7 @@ Puppet::Type.type(:package).provide :pkgin, :parent => Puppet::Provider::Package
         :name     => name,
         :version  => version,
         :ensure   => ensure_status,
+        :status   => status,
         :provider => :pkgin
       }
     else
@@ -47,7 +48,7 @@ Puppet::Type.type(:package).provide :pkgin, :parent => Puppet::Provider::Package
     matching_package = []
     packages.select{ |pkg| pkg.start_with?("#{resource[:name]}") }.each do |package|
       properties = self.class.parse(package)
-      matching_package = properties if properties && resource[:name] == properties[:name]
+      matching_package << properties if properties && resource[:name] == properties[:name]
     end
 
     if matching_package.length > 1
