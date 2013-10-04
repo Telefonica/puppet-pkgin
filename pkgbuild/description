@@ -1,0 +1,4 @@
+Modules for puppet 2.x on SmartOS zones
+Includes SMF provider, now at core and not independent download.
+It also includes the patched pkgin provider.
+

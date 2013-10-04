@@ -1,0 +1,27 @@
+@name is-puppet
+@display is-puppet
+
+@pkgdep ruby19-puppet
+
+@owner puppet
+@group puppet
+@mode 544
+
+@cwd .
+@pkgdir pkgin/lib/puppet/provider
+pkgin/lib/puppet/provider/package/pkgin.rb
+
+@cwd pkgin/payload
+@pkgdir solaris/lib/puppet/type
+solaris/lib/puppet/type/zone.rb
+@pkgdir solaris/lib/puppet/provider
+solaris/lib/puppet/provider/service/smf.rb
+solaris/lib/puppet/provider/zone/solaris.rb
+solaris/lib/puppet/provider/zpool/solaris.rb
+solaris/lib/puppet/provider/zfs/solaris.rb
+solaris/lib/puppet/provider/package/pkgutil.rb
+solaris/lib/puppet/provider/package/blastwave.rb
+solaris/lib/puppet/provider/package/sun.rb
+solaris/lib/puppet/provider/package/sunfreeware.rb
+solaris/lib/puppet/provider/package/pkg.rb
+
