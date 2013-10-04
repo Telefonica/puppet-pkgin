@@ -3,11 +3,11 @@ require "puppet/provider/package"
 Puppet::Type.type(:package).provide :pkgin, :parent => Puppet::Provider::Package do
   desc "Package management using pkgin, a binary package manager for pkgsrc."
 
-  confine :solarisflavour => :smartos
-
   commands :pkgin => "pkgin"
 
   has_feature :installable, :uninstallable, :upgradeable
+
+  defaultfor :solarisflavour => :smartos
 
   def self.parse(package, force_status=nil)
 
