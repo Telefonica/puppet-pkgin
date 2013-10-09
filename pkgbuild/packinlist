@@ -11,6 +11,11 @@
 @pkgdir pkgin/lib/puppet/provider
 pkgin/lib/puppet/provider/package/pkgin.rb
 
+@pkgdir lib/puppet/type
+lib/puppet/type/pkgsrcrepo.rb
+@pkgdir lib/puppet/provider/pkgsrcrepo
+lib/puppet/provider/pkgsrcrepo/parsed.rb
+
 @cwd pkgin/payload
 @pkgdir solaris/lib/puppet/type
 solaris/lib/puppet/type/zone.rb
